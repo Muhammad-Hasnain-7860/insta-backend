@@ -18,20 +18,11 @@ const registerUser = async (req, res) => {
     });
   }
 
-  const alreadyUserExists = await UserModel.findOne({
-    $or: [
-      {
-        email: email,
-      },
-      {
-        username: username,
-      },
-    ],
-  });
+  const alreadyUserExists = await UserModel.findOne({email: email})
 
   if (alreadyUserExists) {
     return res.status(409).json({
-      message: "Username or email already exists",
+      message: " email already exists",
     });
   }
 
