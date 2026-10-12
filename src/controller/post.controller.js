@@ -2,7 +2,7 @@ const { default: mongoose, mongo } = require("mongoose");
 const imagekit = require("../services/imagekit.service");
 const PostModel = require("../model/post.model");
 const UserModel = require("../model/user.model");
-const { nanoid } = require("nanoid");
+const { randomUUID } = require("crypto");
 
 const postCreate = async (req, res) => {
   const files = req.files;
@@ -26,7 +26,7 @@ const postCreate = async (req, res) => {
       folder: "posts",
     });
 
-    postImages.push({ url: uploadImage.url, id: nanoid() });
+    postImages.push({ url: uploadImage.url, id: randomUUID()});
   }
 
   const post = {
@@ -159,7 +159,7 @@ const postComment = async (req, res) => {
     userId: user._id,
     profilePic: user.profilePic,
     comment: text,
-    commentId: nanoid(),
+    commentId: randomUUID(),
     replays: [],
     createdAt: new Date(),
   };
@@ -232,7 +232,7 @@ const postReplay = async (req, res) => {
 
   // update
 
-  const commentNanoId = nanoid();
+  const commentNanoId = randomUUID();
 
   const user = {
     username: foundUser.username,
@@ -410,7 +410,7 @@ const postEdit = async (req, res) => {
 
       newImagesUrls.push({
         url: uploadImage.url,
-        id: nanoid(),
+        id: randomUUID(),
       });
     }
     updateImages = JSON.parse(existingImages).concat(newImagesUrls);
