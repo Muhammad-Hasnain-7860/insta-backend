@@ -8,7 +8,7 @@ const followersAndFollowingRoute = require('./router/followers&following.route')
 
 app.use(express.json())
 app.use(cors({
-  origin: "http://localhost:5173",
+  origin: "https://insta-frontend-ten.vercel.app/",
   credentials: true
 }))
 
