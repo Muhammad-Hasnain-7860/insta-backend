@@ -8,8 +8,7 @@ const postScheme = mongoose.Schema({
 
     description : {
         type : String,
-        minlength : [20 , 'Minium 20 character are Required'],
-        maxLength : [120 , 'Maximum 120 character are Required'],
+        minlength : [10 , 'Minium 20 character are Required'],
         required : [true , 'Description are Required']
     },
 

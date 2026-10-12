@@ -136,7 +136,7 @@ const refresh = async (req, res) => {
 };
 
 const getallUsers = async (req, res) => {
-  const users = await UserModel.find().select("_id name username profilePic");
+  const users = await UserModel.find().select("_id name username profilePic email");
 
   res.status(200).json({
     message: "all users fetched successFully",
